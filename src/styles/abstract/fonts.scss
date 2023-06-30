@@ -1,0 +1,14 @@
+
+
+@mixin font-setup($fontsize , $color, $fontweight,$letterspacing,$textransform) {
+
+    font-family: 'Manrope', sans-serif;
+    font-size: $fontsize;
+    font-weight: $fontweight;
+    color: $color;
+    letter-spacing: $letterspacing;
+    font-variant:small-caps;
+    font-kerning: auto;
+    text-transform: $textransform;
+
+}

@@ -1,0 +1,14 @@
+@mixin advice-button(
+     
+    $bgcolor,
+    $radius,
+    $boxshadow
+)
+{
+    background-color: $bgcolor;
+    border-radius: $radius;
+    box-shadow: $boxshadow;
+    cursor: pointer;
+    border: none;
+    
+}

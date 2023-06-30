@@ -1,0 +1,168 @@
+@use './abstract/button.scss' as button;
+@use './abstract/color.scss' as color;
+@use './abstract/display.scss' as display;
+@use './abstract/fonts.scss' as fonts;
+@use './abstract/spaces.scss' as spaces;
+
+* {
+    @include spaces.padding-margin(0,0)
+}
+body {
+    box-sizing: border-box;
+    background-color: color.$dark-blue ;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+.card--container{
+    position: relative;
+    background-color: color.$dark-grayish-blue;
+    max-width: 500px;
+    border-radius: 10px;
+    height: 250px;
+    @include spaces.padding-margin(30px,0);
+   animation: 1.5s transition ease-in-out;
+}
+.card--contents{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    .card--title{
+
+      .advice-number{
+            @include fonts.font-setup(
+                13px,
+                color.$neon-green,
+                800,
+                4px,
+                uppercase
+            )
+       }
+    }
+    .card-quotes{
+        @include spaces.padding-margin(20px,0);
+        .quotes-text{
+            @include fonts.font-setup(
+                1.3rem,
+                color.$light-cyan,
+                800,
+                4px,
+                auto
+            )
+        }
+    }
+    .card-button{
+
+        position: absolute;
+        bottom: -30px;
+        button{
+            @include spaces.padding-margin(20px,0);
+            transition: all 1s ease-in-out;
+            @include button.advice-button(
+                color.$neon-green,
+                50px,
+                0px 2px 2px 5px color.$dark-grayish-blue
+            );
+            &:hover{
+                box-shadow:  2px 2px 20px color.$neon-green;
+            }
+            img {
+
+                width: 25px;
+                animation: 2.5s rotate-infinite-icon linear infinite both;
+            }
+        }
+        
+    }
+    .card-design {
+        padding-bottom: 10px;
+        img { 
+            
+            @include spaces.padding-margin(0px,10px 0px 0px 0px);
+
+        }
+    }
+}
+.loader {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    position: relative;
+  }
+  .loader::after,
+  .loader::before {
+    content: '';  
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid  color.$neon-green,;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: animloader 2s linear infinite;
+  }
+  .loader::after {
+    animation-delay: 1s;
+  }
+  
+  @keyframes animloader {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+
+@keyframes rotate-infinite-icon {
+    
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes transition {
+    
+    0%{
+        opacity: 0.5;
+    }
+    100%{
+        
+        opacity: 1;
+    }
+}
+@media (max-width:600px) {
+
+    .card--container{
+        max-width: 80%;
+        margin: auto;
+    }
+    
+}
+@media (max-width:375px) {
+
+    .card--container{
+        max-width: 75%;
+        margin: auto;
+        height: 310px;
+    }
+    
+}
